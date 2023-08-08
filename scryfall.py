@@ -36,7 +36,9 @@ class ScryfallClient:
             if card.get("card_faces") is None:
                 images.append(card.get("image_uris").get("large"))
             else:
-                print("multifaced card")
+                for face in card.get("card_faces"):
+                    if "land" in face.get("type_line").lower():
+                        images.append(face.get("image_uris").get("large"))
         
         return images
 
@@ -48,5 +50,6 @@ class ScryfallClient:
             if card.get("card_faces") is None:
                 mana_costs.append(card.get("mana_cost"))
             else:
-                print("multifaced card")
+                for face in card.get("card_faces"):
+                    mana_costs.append(face.get("mana_cost"))
         return mana_costs
