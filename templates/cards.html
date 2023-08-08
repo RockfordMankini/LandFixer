@@ -1,0 +1,50 @@
+<div class="row">
+
+    <div class="col-sm-4">
+        <div>
+            <h3>Summary</h3>
+            {{suggestions["cards_left"]|safe}}
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div>
+            <h3>Current State</h3>
+            {{suggestions["current"]|safe}}
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div>
+            <h3>Desired State</h3>
+            {{suggestions["desired"]|safe}}
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+{% for image in images %}
+<img src="{{image}}" width=200>
+{% endfor %}
+
+
+
+<table id="stats_table" style="display: none;">
+
+    <thead>
+        {% for key, value in deck_counts.items() %}
+            <th>{{key}}</th>
+        {% endfor %}
+    </thead>
+    <tbody>
+        <tr>
+            {% for key, value in deck_counts.items() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+
+<table>
